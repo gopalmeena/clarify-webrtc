@@ -1,0 +1,53 @@
+.content {
+    margin-top: 100px;
+}
+
+.phone {
+    width: 100%;
+}
+
+[classname="phone"] {
+    width: 100%;
+}
+
+img.avatar {
+    width: 50px;
+}
+
+img.avatar-large {
+    width: 300px;
+}
+
+.btn.call {
+    float: right;
+    height: 50px;
+    width: 50px;
+    font-size: 22pt;
+}
+
+
+.btn.hang-up {
+    height: 50px;
+    width: 50px;
+    font-size: 22pt;
+}
+
+.contact {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.window {
+    padding: 20px 40px 20px;
+    color: #777;
+    background-color: #ffffff;
+    border-radius: 3px;
+}
+
+.window h2 {
+    text-align: center;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+

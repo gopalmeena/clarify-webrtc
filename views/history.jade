@@ -1,0 +1,13 @@
+extends layout
+block content
+  .container
+    .row
+      .col-sm-8.col-sm-offset-2
+        ul.list-group
+          each call in calls
+            li.list-group-item
+              .row
+                .col-sm-6.col-xs-6
+                  = call.name
+                .col-sm-6.col-xs-6
+                  audio(src="/uploads/#{call.id}.ogg" controls)

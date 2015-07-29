@@ -1,0 +1,7 @@
+<div class="container" data-ng-controller="HistoryController">
+    <ul>
+        <li ng-repeat="call in calls">
+            <audio ng-src="/uploads/{{call._id}}.ogg" controls></audio>
+        </li>
+    </ul>
+</div>
