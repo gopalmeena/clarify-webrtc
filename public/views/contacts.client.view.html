@@ -1,23 +1,24 @@
 <div class="container" data-ng-controller="ContactsController" data-ng-init="find()">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-            <ul class="list-group">
-                <li class="list-group-item" data-ng-repeat="contact in contacts" data-ng-hide="me(contact._id)">
-                    <div class="row">
-                        <div class="col-sm-2 col-xs-2">
-                            <img src="/img/avatar.png" class="avatar"/>
-                        </div>
-                        <div class="col-sm-8 col-xs-8">
-                            <div class="contact">{{contact.username}}</div>
-                        </div>
-                        <div class="col-sm-2 col-xs-2">
-                            <button class="btn btn-success call" data-ng-click="call(contact._id)" data-ng-show="isOnline(contact._id)">
-                                <i class="fa fa-phone"></i>
-                            </button>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <ul class="list-group">
+        <li class="list-group-item" data-ng-repeat="contact in contacts" data-ng-hide="me(contact._id)">
+          <div class="row">
+            <div class="col-sm-2 col-xs-2">
+              <img src="/img/avatar.png" class="avatar"/>
+            </div>
+            <div class="col-sm-8 col-xs-8">
+              <div class="contact">{{contact.username}}</div>
+            </div>
+            <div class="col-sm-2 col-xs-2">
+              <button class="btn btn-success call" data-ng-click="call(contact._id)"
+                      data-ng-show="isOnline(contact._id)">
+                <i class="fa fa-phone"></i>
+              </button>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </div>

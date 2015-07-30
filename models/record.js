@@ -13,6 +13,9 @@ var Record = new mongoose.Schema({
     },
     duration: {
       type: Number
+    },
+    processing_cost: {
+      type: Number
     }
   },
   call: {
@@ -28,8 +31,9 @@ var Record = new mongoose.Schema({
 Record.virtual('path').get(function(){
   return './public/uploads/' + this.id + '.ogg';
 });
+
 Record.virtual('url').get(function(){
-  return config.BASE_URL + '/uploads/' + this.id + '.ogg';
+  return '/uploads/' + this.id + '.ogg';
 });
 
 Record.set('toJSON', { virtuals: true, getters: true });

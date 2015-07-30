@@ -1,22 +1,22 @@
 <div class="container" data-ng-controller="CallsController">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <div class="video panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{contact.username}}</h3>
-                </div>
-                <div class="panel-body text-center">
-                    <img src="/img/avatar.png" class="avatar-large">
-                </div>
-                <div class="panel-footer">
-                    <div class="row actions text-center">
-                        <button class="btn btn-danger hang-up" data-ng-click="hangup()">
-                            <i class="fa fa-phone"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="video panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{contact.username}}</h3>
         </div>
+        <div class="panel-body text-center">
+          <img src="/img/avatar.png" class="avatar-large">
+        </div>
+        <div class="panel-footer">
+          <div class="row actions text-center">
+            <button class="btn btn-danger hang-up" data-ng-click="hangup()">
+              <i class="fa fa-phone"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <audio id="phone" class="phone" autoplay></audio>

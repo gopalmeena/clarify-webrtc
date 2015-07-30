@@ -1,20 +1,28 @@
 <div class="container" data-ng-controller="HistoryController">
-    <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <ul class="list-group">
-                <li class="list-group-item" data-ng-repeat="call in calls track by $index">
-                    <div class="row">
-                        <div class="col-sm-6 col-xs-6">
-                            <h4>{{call.from.username}} - {{call.to.username }}</h4>
-                        </div>
-                        <div class="col-sm-6 col-xs-6">
-                            <div class="align-right" data-ng-repeat="r in call.records">
-                                <audio data-ng-src="{{ r.url }}" controls></audio>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </div>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <table class="calls table table-hover">
+        <thead>
+          <tr>
+            <th>Call</th>
+            <th>Records</th>
+            <th>Duration</th>
+            <th>Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-ng-repeat="(id, call) in calls track by id">
+            <td>{{call.name}}</td>
+            <td>
+              <div class="align-right" data-ng-repeat="r in call.records track by r._id">
+                <audio data-ng-src="{{ r.url }}" controls></audio>
+              </div>
+            </td>
+            <td data-ng-show="duration(call) > -1">{{duration(call).toHHMMSS()}}</td>
+            <td data-ng-show="cost(call) > -1 ">{{cost(call) === undefined ? 'N/A' : '$' + cost(call)}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>

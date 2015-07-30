@@ -54,3 +54,6 @@ img.avatar-large {
     text-align: right;
 }
 
+table.calls.table > tbody > tr > td {
+    vertical-align: middle;
+}

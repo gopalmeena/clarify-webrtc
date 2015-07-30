@@ -13,7 +13,7 @@ router.get('/search', auth.ensureAuthenticated, function(req, res){
   res.render('search', {user: req.user});
 });
 
-router.get('/notify', records.notify);
+router.post('/notify', records.notify);
 
 router.post('/search', auth.ensureAuthenticated, function(req, res){
   records.search(req, res);

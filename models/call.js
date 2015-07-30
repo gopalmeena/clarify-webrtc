@@ -1,6 +1,7 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var dateFormat = require('dateformat');
 
 var Call = new mongoose.Schema({
   date: Date,
@@ -19,7 +20,10 @@ var Call = new mongoose.Schema({
 });
 
 Call.virtual('name').get(function(){
-   return this.from.username + ' - ' + this.to.username;
+   return this.from.username + ' - ' + this.to.username
+     + ' on ' + dateFormat(this.date, 'yyyy/mm/dd')
+     + ' at ' + dateFormat(this.date, 'h:MM TT');
 });
 
+Call.set('toJSON', { virtuals: true});
 module.exports = mongoose.model('Call', Call);
