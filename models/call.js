@@ -11,7 +11,7 @@ var Call = new mongoose.Schema({
   to: {
     type: mongoose.Schema.ObjectId,
     ref: 'User'
-  },
+  }
 });
 
 module.exports = mongoose.model('Call', Call);

@@ -34,7 +34,7 @@ angular.module('calls').controller('ContactsController', ['$scope', 'Contacts', 
 
     Socket.on('call', function(from){
       console.log('IN', from);
-      $location.path('/call/' + from._id + '/' + user._id + '/incoming');
+      $location.path('/call/' + from.id + '/' + user._id + '/incoming');
     });
 
     Socket.on('contacts.online', function(contacts){
