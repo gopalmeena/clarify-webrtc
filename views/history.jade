@@ -10,4 +10,5 @@ block content
                 .col-sm-6.col-xs-6
                   = call.name
                 .col-sm-6.col-xs-6
-                  audio(src="/uploads/#{call._id}.ogg" controls)
+                  each record in call.records
+                    audio(src=record.url controls)

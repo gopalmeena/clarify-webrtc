@@ -1,12 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var config = require('../config');
 
 var Record = new mongoose.Schema({
-  name: {
-    type: String,
-    trim: true
-  },
   clarify: {
     bundle_id: {
       type: String

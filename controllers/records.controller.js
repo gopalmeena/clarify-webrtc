@@ -33,14 +33,13 @@ var gatherHits = function(itemResult, terms) {
 };
 
 exports.create = function(req, res){
-  var name = req.body.name + ' - ' + dateFormat(Date.now(), 'mm/dd/yyyy h:MM');
-
-  Call.findById(req.params.callId, function(err, call){
+  Call.findById(req.body.call, function(err, call){
     Record.create({
-      name: name,
       call: call,
       user: req.user
     }, function(err, record){
+      call.records.push(record);
+      call.save();
       fs.writeFile('./public/uploads/' + record._id + '.ogg', '', 'base64');
       res.status(200).json({id: record._id});
     });
@@ -49,7 +48,7 @@ exports.create = function(req, res){
 
 exports.update = function(req, res) {
   var data = handleData(req.body.data);
-  fs.appendFile('./public/uploads/' + req.params._id + '.ogg', data, 'base64');
+  fs.appendFile('./public/uploads/' + req.params.id + '.ogg', data, 'base64');
   res.status(200).json({id: req.params.id});
 };
 

@@ -8,7 +8,7 @@ var app = angular.module('calls', ['ngResource', 'ui.router', 'btford.socket-io'
     url: '/',
     templateUrl: '/views/contacts.client.view.html'
   }).state('call', {
-    url: '/call/:from/:to/:direction',
+    url: '/call/:from/:to/:direction/:call',
     templateUrl: '/views/call.client.view.html'
   }).state('history', {
     url: '/history',

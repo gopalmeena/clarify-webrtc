@@ -2,6 +2,8 @@
 
 require('../models/user');
 var User = require('mongoose').model('User');
+require('../models/call');
+var Call = require('mongoose').model('Call');
 
 exports.index = function(req, res){
   res.render('index', {user: req.user});
@@ -23,7 +25,14 @@ exports.one = function(req, res) {
 
 exports.call = function(req, res) {
   var from = req.user._id;
-  var io = req.app.get('io');
-  io.sockets.in(req.params.id).emit('call', {id: from});
-  res.jsonp({contact: req.params.id});
+  var to = req.params.id;
+  Call.create({
+    from: from,
+    to: to,
+    date: Date.now()
+  }, function(err, call){
+    var io = req.app.get('io');
+    io.sockets.in(to).emit('call', {from: from, to: to, call: call._id});
+    res.status(201).json(call);
+  })
 };

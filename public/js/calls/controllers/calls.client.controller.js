@@ -10,12 +10,12 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
   'Socket','Contacts', 'Calls', 'Records',
   function($scope, $stateParams, $location, Socket, Contacts, Calls, Records){
 
-  var pc, mediaRecorder, callId, record;
+  var pc, mediaRecorder, record;
 
   var isOutgoing = $stateParams.direction === 'outgoing';
   var from = $stateParams.from;
   var to = $stateParams.to;
-  var id = isOutgoing ? to : from;
+  var call = $stateParams.call;
   var options = { 'OfferToReceiveAudio': true };
 
   $scope.hangup = function () {
@@ -23,21 +23,6 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
   };
 
   Socket.emit('call.connect', {from: from, to: to});
-
-  Contacts.get({id: id}, function(contact){
-    $scope.contact = contact;
-
-    if (isOutgoing) {
-      Contacts.call({id: $stateParams.to});
-      var call = new Calls ({
-        to: $scope.contact._id
-      });
-      call.$save(function(call){
-        callId = call._id;
-      });
-    }
-
-  });
 
   var gotIceCandidate = function(event){
     if (event.candidate) {
@@ -66,12 +51,13 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
     pc.onicecandidate = gotIceCandidate;
     pc.onaddstream = gotRemoteStream;
     if (!isOutgoing) {
-      Socket.emit('call.ready', {from: from, to: to, callId: callId});
+      Socket.emit('call.ready', {from: from, to: to, call: call});
     }
 
     record = new Records({
       from: from,
-      to: to
+      to: to,
+      call: call
     });
     record.$save();
 
@@ -117,7 +103,6 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
   });
 
   Socket.on('call.ready', function(message){
-    callId = message.callId;
     pc.createOffer(
       gotLocalDescription,
       gotError,
