@@ -4,6 +4,7 @@ html
     link(rel='stylesheet', href='/lib/css/bootstrap.css')
     link(rel='stylesheet', href='/lib/css/font-awesome.css')
     link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/search.css')
   body(ng-app='calls')
     header(class='navbar navbar-fixed-top navbar-default')
       div(class='container')
@@ -17,7 +18,7 @@ html
               li
                 a(href='/calls/history') History
               li
-                a(href='/search') Search
+                a(href='/records/search') Search
 
           ul.nav.navbar-nav.navbar-right
             if (user)
@@ -47,5 +48,5 @@ html
     script(src='/js/calls/services/auth.client.service.js')
     script(src='/js/calls/services/socket.client.service.js')
     script(src='/js/calls/controllers/contacts.client.controller.js')
-    script(src='js/search.js')
+    script(src='/js/search.js')
 

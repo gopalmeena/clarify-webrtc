@@ -19,7 +19,7 @@ $(function(){
   };
   searchForm.submit(function(e){
     result.empty();
-    $.post('/search', {query: queryInput.val()})
+    $.post('/records/search', {query: queryInput.val()})
       .then(function(r){
         error.hide();
         var items = r.results;

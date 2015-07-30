@@ -53,7 +53,7 @@ module.exports = function(grunt) {
           {expand: true, flatten: true, cwd: 'bower_components', dest: 'public/lib/js', src: [
             'angularjs/angular.js',
             'jquery/dist/jquery.js',
-            'lodash/dist/lodash.js',
+            'lodash/lodash.js',
             'jplayer/dist/jplayer/jquery.jplayer.js',
             'socket.io-client/socket.io.js',
             'angular-socket-io/socket.js',
@@ -83,6 +83,11 @@ module.exports = function(grunt) {
       fonts: {
         files: [
           {expand: true, flatten: true, cwd: 'bower_components', dest: 'public/lib/fonts', src: [
+            'bootstrap/fonts/glyphicons-halflings-regular.eot',
+            'bootstrap/fonts/glyphicons-halflings-regular.svg',
+            'bootstrap/fonts/glyphicons-halflings-regular.ttf',
+            'bootstrap/fonts/glyphicons-halflings-regular.woff',
+            'bootstrap/fonts/glyphicons-halflings-regular.woff2',
             'font-awesome/fonts/fontawesome-webfont.eot',
             'font-awesome/fonts/fontawesome-webfont.svg',
             'font-awesome/fonts/fontawesome-webfont.ttf',
