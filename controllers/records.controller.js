@@ -50,7 +50,7 @@ exports.create = function(req, res){
 exports.update = function(req, res) {
   var data = handleData(req.body.data);
   fs.appendFile('./public/uploads/' + req.params._id + '.ogg', data, 'base64');
-  res.status(200).json({_id: req.params._id});
+  res.status(200).json({id: req.params.id});
 };
 
 exports.finish = function(req, res) {
