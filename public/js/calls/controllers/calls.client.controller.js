@@ -114,6 +114,7 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
     Socket.emit('call.hang-up.accepted', message);
     mediaRecorder.stop();
     pc.close();
+    record.$finish();
     $location.path('/');
   });
 

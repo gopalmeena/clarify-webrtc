@@ -53,7 +53,7 @@ exports.update = function(req, res) {
 };
 
 exports.finish = function(req, res) {
-  Record.findById(req.params._id, function(err, record){
+  Record.findById(req.params.id, function(err, record){
     var metadata = {
       recordId: record._id
     };

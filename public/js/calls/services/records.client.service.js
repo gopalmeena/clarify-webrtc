@@ -7,7 +7,11 @@ angular.module('calls').factory('Records', ['$resource',
     }, {
       update: {
         method: 'PUT'
-      }
+      },
+      finish: {
+        url: 'records/:id/finish',
+        method: 'PUT'
+      },
     });
   }
 ]);
