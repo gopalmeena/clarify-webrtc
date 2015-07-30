@@ -57,7 +57,7 @@ exports.finish = function (req, res) {
             };
             clarifyClient.createBundle({
                 name: 'Test',
-                media_url: config.BASE_URL + '/uploads/533746.mp3', // + record._id + '.ogg',
+                media_url: config.BASE_URL + '/uploads/' + record._id + '.ogg',
                 notify_url: config.BASE_URL + '/records/notify',
                 external_id: record._id.toString(),
                 metadata: JSON.stringify(metadata)
