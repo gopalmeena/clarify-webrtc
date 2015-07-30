@@ -1,9 +1,14 @@
 'use strict';
 
-angular.module('calls').factory('Calls', ['$resource',
-  function($resource) {
-    return $resource('calls/:id', {
-      id: '@_id'
-    });
+angular.module('calls').service('Calls', ['$http',
+  function($http) {
+
+      function history(){
+          return $http.get('/calls/history');
+      }
+
+      return {
+          history: history
+      }
   }
 ]);

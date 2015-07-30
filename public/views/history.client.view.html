@@ -1,7 +1,20 @@
 <div class="container" data-ng-controller="HistoryController">
-    <ul>
-        <li ng-repeat="call in calls">
-            <audio ng-src="/uploads/{{call._id}}.ogg" controls></audio>
-        </li>
-    </ul>
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <ul class="list-group">
+                <li class="list-group-item" data-ng-repeat="call in calls track by $index">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <h4>{{call.from.username}} - {{call.to.username }}</h4>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="align-right" data-ng-repeat="r in call.records">
+                                <audio data-ng-src="{{ r.url }}" controls></audio>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>

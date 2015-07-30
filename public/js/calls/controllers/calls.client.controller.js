@@ -7,8 +7,8 @@ var SessionDescription = window.mozRTCSessionDescription || window.RTCSessionDes
 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
 
 angular.module('calls').controller('CallsController', ['$scope', '$stateParams', '$location',
-  'Socket','Contacts', 'Calls', 'Records',
-  function($scope, $stateParams, $location, Socket, Contacts, Calls, Records){
+  'Socket','Contacts', 'Records',
+  function($scope, $stateParams, $location, Socket, Contacts, Records){
 
   var pc, mediaRecorder, record;
 
