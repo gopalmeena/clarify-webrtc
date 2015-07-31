@@ -62,7 +62,6 @@ exports.finish = function (req, res) {
                 external_id: record._id.toString(),
                 metadata: JSON.stringify(metadata)
             }, function(err){
-                console.log(err);
             });
             res.sendStatus(200);
         });
@@ -70,11 +69,11 @@ exports.finish = function (req, res) {
 
 exports.notify = function (req, res) {
     var io = req.app.get('io');
-    console.log(req);
     if ('bundle_processing_cost' in req.body) {
         Record.findById(req.body.external_id, function (err, record) {
             if (record) {
-                record.processing_cost = req.body.bundle_processing_cost;
+                record.clarify.processing_cost = req.body.bundle_processing_cost;
+                record.save();
             }
         });
     }
@@ -86,6 +85,7 @@ exports.notify = function (req, res) {
                 record.clarify.bundle_id = req.body.bundle_id;
                 record.clarify.indexedAt = Date.now();
                 record.clarify.duration = trackData.duration;
+                record.save();
             }
         });
     }
@@ -127,12 +127,13 @@ exports.search = function (req, res) {
                         name: media.name,
                         score: itemResult.score,
                         hits: gatherHits(itemResult, terms),
-                        duration: media.duration,
+                        duration: media.clarify.duration,
                         searchTermResults: itemResult.term_results
                     };
                     searchResult.results.push(item);
                 }
             }
+
             res.status(200).json(searchResult);
         });
     });

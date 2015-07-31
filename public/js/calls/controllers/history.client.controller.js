@@ -10,12 +10,8 @@ angular.module('calls').controller('HistoryController', ['$scope', 'Auth', 'Call
         });
 
         Calls.history().success(function (result) {
-            _.each(result.call, function(c){
-                _.each(c.records, function(r){
-                    r.url = '/uploads/'+ r._id +'.ogg';
-                });
+            $scope.calls = _.filter(result.calls, function(c){
+                return c.records.length>0;
             });
-
-            $scope.calls = result.calls;
         });
     }]);

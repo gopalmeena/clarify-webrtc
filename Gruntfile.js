@@ -59,7 +59,8 @@ module.exports = function (grunt) {
                         'socket.io-client/socket.io.js',
                         'angular-socket-io/socket.js',
                         'angular-resource/angular-resource.js',
-                        'angular-ui-router/release/angular-ui-router.js'
+                        'angular-ui-router/release/angular-ui-router.js',
+                        'bootstrap/dist/js/bootstrap.min.js'
                     ]
                     }
                 ]

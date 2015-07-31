@@ -3,74 +3,68 @@
 }
 
 .search button {
-  width: 100%;
+    width: 100%;
 }
 
-.media{
-  padding: 2px;
+.media {
+    padding: 2px;
 }
 
-.media li{
-  list-style: none;
-  border: 1px solid rgb(173, 173, 173);
-  padding: 4px;
-  border-radius: 4px;
-  margin: 10px 0;
-}
-.media li .title{
-  font-size: 80%;
+.media li {
+    list-style: none;
+    border: 1px solid rgb(173, 173, 173);
+    padding: 4px;
+    border-radius: 4px;
+    margin: 10px 0;
 }
 
-.playlist{
-  padding-left: 0;
+.media li .title {
+    font-size: 80%;
 }
 
-.playlist > li{
-  list-style: none;
-  height: 88px;
+.jp-audio {
+    position: relative;
 }
 
-.jp-audio{
-  padding: 2px;
-  width: 100% !important;
-  height: 80px;
-  position: relative;
-  background-color: #f5f5f5 !important;
-  border: 1px solid #e3e3e3 !important;
-  border-radius: 4px !important;
+.jp-progress {
+    height: 16px;
+    background-color: rgba(27, 175, 255, 0.24);
 }
 
-.jp-progress{
-  left: 0px !important;
-  top: 28px !important;
-  width: 100% !important;
+.jp-progress .jp-seek-bar .jp-play-bar {
+    height: 16px;
+    background-color: #666;
+    position: absolute;
 }
 
-.mark{
-  width: 4px;
-  height: 16px;
-  background-color: #3276b1;
-  margin-top: -16px;
-  margin-left: -2px;
-  position: relative;
-  cursor: pointer;
+.mark {
+    width: 4px;
+    height: 16px;
+    background-color: #3276b1;
+    margin-left: -2px;
+    position: absolute;
+    cursor: pointer;
 }
 
-.player-controls{
-  margin-top: 22px;
+.player-controls {
+    margin-top: 22px;
+    margin-left: 0;
 }
 
-.jp-time-holder{
-  left: 4px !important;
-  font-size: 70%;
+.jp-time-holder {
+    font-size: 70%;
 }
 
-.bundle-title{
-  font-size: 80%;
-  font-weight: bold;
-  margin-left: 4px;
+.bundle-title {
+    font-size: 80%;
+    font-weight: bold;
+    clear: both;
 }
 
-#searchForm{
-  margin-left: 5px;
+.clear {
+    clear: both;
+}
+
+.jp-time-holder {
+    margin-top: 10px;
 }
