@@ -15,7 +15,7 @@ var Record = new mongoose.Schema({
       type: Number
     },
     processing_cost: {
-        type: Number
+      type: Number
     }
   },
   call: {

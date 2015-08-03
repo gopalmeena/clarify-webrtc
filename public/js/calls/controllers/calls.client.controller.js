@@ -22,6 +22,12 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
     Socket.emit('call.hang-up', {from: from, to: to});
   };
 
+  var contactId = isOutgoing ? to : from;
+  Contacts.get({id: contactId}, function(contact){
+    $scope.contact = contact;
+  });
+
+
   Socket.emit('call.connect', {from: from, to: to});
 
   var gotIceCandidate = function(event){

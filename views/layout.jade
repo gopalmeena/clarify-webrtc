@@ -1,58 +1,59 @@
 doctype html
 html
-    head
-        link(rel='stylesheet', href='/lib/css/bootstrap.css')
-        link(rel='stylesheet', href='/lib/css/font-awesome.css')
-        link(rel='stylesheet', href='/css/style.css')
-        link(rel='stylesheet', href='/css/search.css')
-    body(ng-app='calls', ng-controller='ShellController')
-        header(class='navbar navbar-fixed-top navbar-default')
-            div(class='container')
-                div(class='navbar-header')
-                    a(class='navbar-brand', href='/') Simple RTC
-                .collapse.navbar-collapse
-                    ul.nav.navbar-nav
-                        if (user)
-                            li(ng-class="{'active': tab=='/'}")
-                                a(href='#/') Contacts
-                            li(ng-class="{'active': tab=='/history'}")
-                                a(href='#/history') History
-                            li(ng-class="{'active': tab=='/search'}")
-                                a(href='#/search') Search
+  head
+    link(rel='stylesheet', href='/lib/css/bootstrap.css')
+    link(rel='stylesheet', href='/lib/css/font-awesome.css')
+    link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/search.css')
+  body(ng-app='calls', ng-controller='ShellController')
+    header(class='navbar navbar-fixed-top navbar-default')
+      div(class='container')
+        div(class='navbar-header')
+          a(class='navbar-brand', href='/') Simple RTC
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav
+            if (user)
+              li(ng-class="{'active': tab=='/'}")
+                a(href='#/') Contacts
+              li(ng-class="{'active': tab=='/history'}")
+                a(href='#/history') History
+              li(ng-class="{'active': tab=='/search'}")
+                a(href='#/search') Search
 
-                    ul.nav.navbar-nav.navbar-right
-                        if (user)
-                            li
-                                a(href='/sign_out') Sign out
-                        else
-                            li
-                                a(href='/sign_in') Sign in
-                            li
-                                a(href='/sign_up') Sign up
+          ul.nav.navbar-nav.navbar-right
+            if (user)
+              li
+                a(href='/sign_out') Sign out
+            else
+              li
+                a(href='/sign_in') Sign in
+              li
+                a(href='/sign_up') Sign up
 
-        .content
-            block content
+    .content
+      block content
 
-        script(src='/lib/js/socket.io.js')
-        script(src='/lib/js/jquery.js')
-        script(src='/lib/js/bootstrap.min.js')
-        script(src='/lib/js/jquery.jplayer.js')
-        script(src='/lib/js/lodash.js')
-        script(src='/lib/js/angular.js')
-        script(src='/lib/js/angular-resource.js')
-        script(src='/lib/js/angular-ui-router.js')
-        script(src='/lib/js/socket.js')
-        script(src='/js/calls/calls.client.module.js')
-        script(src='/js/calls/controllers/shell.client.controller.js')
-        script(src='/js/calls/directives/jplayer.js')
-        script(src='/js/calls/controllers/calls.client.controller.js')
-        script(src='/js/calls/controllers/history.client.controller.js')
-        script(src='/js/calls/controllers/search.client.controller.js')
-        script(src='/js/calls/services/contacts.client.service.js')
-        script(src='/js/calls/services/search.client.service.js')
-        script(src='/js/calls/services/calls.client.service.js')
-        script(src='/js/calls/services/records.client.service.js')
-        script(src='/js/calls/services/auth.client.service.js')
-        script(src='/js/calls/services/socket.client.service.js')
-        script(src='/js/calls/controllers/contacts.client.controller.js')
+    script(src='/lib/js/socket.io.js')
+    script(src='/lib/js/jquery.js')
+    script(src='/lib/js/bootstrap.min.js')
+    script(src='/lib/js/jquery.jplayer.js')
+    script(src='/lib/js/lodash.js')
+    script(src='/lib/js/angular.js')
+    script(src='/lib/js/angular-resource.js')
+    script(src='/lib/js/angular-ui-router.js')
+    script(src='/lib/js/socket.js')
+    script(src='/js/utils/duration.js')
+    script(src='/js/calls/calls.client.module.js')
+    script(src='/js/calls/controllers/shell.client.controller.js')
+    script(src='/js/calls/directives/jplayer.js')
+    script(src='/js/calls/controllers/calls.client.controller.js')
+    script(src='/js/calls/controllers/history.client.controller.js')
+    script(src='/js/calls/controllers/search.client.controller.js')
+    script(src='/js/calls/services/contacts.client.service.js')
+    script(src='/js/calls/services/search.client.service.js')
+    script(src='/js/calls/services/calls.client.service.js')
+    script(src='/js/calls/services/records.client.service.js')
+    script(src='/js/calls/services/auth.client.service.js')
+    script(src='/js/calls/services/socket.client.service.js')
+    script(src='/js/calls/controllers/contacts.client.controller.js')
 
