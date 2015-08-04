@@ -7,6 +7,7 @@ var auth = require('../middleware/auth');
 
 router.get('/history', auth.ensureAuthenticated, calls.list);
 router.post('/', auth.ensureAuthenticatedAjax, calls.create);
+router.delete('/:id', auth.ensureAuthenticatedAjax, calls.delete);
 
 module.exports = router;
 

@@ -1,28 +1,48 @@
 <div class="container" data-ng-controller="HistoryController">
   <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <table class="calls table table-hover">
+    <div class="col-sm-12">
+      <table class="calls table table-hover" data-ng-show="calls.length>0">
+        <colgroup>
+          <col />
+          <col width="300px"/>
+          <col width="70px"/>
+          <col width="70px"/>
+          <col width="90px"/>
+        </colgroup>
         <thead>
           <tr>
             <th>Call</th>
-            <th>Records</th>
+            <th>Audio</th>
             <th>Duration</th>
             <th>Cost</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr data-ng-repeat="(id, call) in calls track by id">
+          <tr data-ng-repeat="(id, call) in calls | orderBy:'-date' track by $index">
             <td>{{call.name}}</td>
             <td>
               <div class="align-right" data-ng-repeat="r in call.records track by r._id">
                 <audio data-ng-src="{{ r.url }}" controls></audio>
               </div>
             </td>
-            <td data-ng-show="duration(call) > -1">{{duration(call).toHHMMSS()}}</td>
-            <td data-ng-show="cost(call) > -1 ">{{cost(call) === undefined ? 'N/A' : '$' + cost(call)}}</td>
+            <td>
+              <span data-ng-show="duration(call) > -1" data-ng-bind="duration(call).toHHMMSS()"></span>
+            </td>
+            <td>
+              <span data-ng-show="cost(call) > -1" data-ng-bind="cost(call) === undefined ? 'N/A' : '$' + cost(call)"></span>
+            </td>
+            <td>
+              <a href="javascript:void(0)" data-ng-click="remove(call)">
+                <i class="glyphicon glyphicon-remove"></i> Remove
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
+      <div data-ng-show="calls.length == 0">
+        <p>No calls found</p>
+      </div>
     </div>
   </div>
 </div>

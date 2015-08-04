@@ -4,7 +4,7 @@ angular.module('calls').controller('HistoryController', ['$scope', 'Auth', 'Call
   function ($scope, Auth, Calls, Socket) {
     var user;
 
-    $scope.calls = {};
+    $scope.calls = [];
 
     Auth.get().then(function (u) {
       user = u;
@@ -15,17 +15,16 @@ angular.module('calls').controller('HistoryController', ['$scope', 'Auth', 'Call
         return call.records.length > 0;
       });
 
-      calls.forEach(function(call){
-        $scope.calls[call._id] = call;
-      });
+      calls.forEach(prepareCall);
+      $scope.calls = calls;
     });
 
     Socket.on('call.accepted', function(call){
-      $scope.calls[call._id] = call;
+      updateCallById(prepareCall(call));
     });
 
     Socket.on('call.indexed', function(call){
-      $scope.calls[call._id] = call;
+      updateCallById(prepareCall(call));
     });
 
     $scope.duration = function(call) {
@@ -52,5 +51,30 @@ angular.module('calls').controller('HistoryController', ['$scope', 'Auth', 'Call
       }
       return cost;
     };
+
+    $scope.remove = function(call){
+      Calls.remove(call._id).success(function(removed){
+        if (removed) {
+          var c = _.first(_.where($scope.calls, {id: removed._id}));
+          if (c) {
+            var index = $scope.calls.indexOf(c);
+            $scope.calls.splice(index, 1);
+          }
+        }
+      });
+    };
+
+    function prepareCall(call){
+      call.date = moment(call.date);
+      return call;
+    }
+
+    function updateCallById(call){
+      var c = _.first(_.where($scope.calls, {id: call.id}));
+      if (c){
+        var index = $scope.calls.indexOf(c);
+        $scope.calls[index] = call;
+      }
+    }
   }
 ]);

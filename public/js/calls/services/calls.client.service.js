@@ -7,8 +7,13 @@ angular.module('calls').service('Calls', ['$http',
       return $http.get('/calls/history');
     }
 
+    function remove(id){
+      return $http.delete('/calls/' + id);
+    }
+
     return {
-      history: history
+      history: history,
+      remove: remove
     };
   }
 ]);

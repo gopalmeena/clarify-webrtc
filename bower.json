@@ -12,6 +12,7 @@
     "font-awesome": "~4.3.0",
     "amplitude": "~2.0.0",
     "lodash": "~3.10.0",
-    "jplayer": "~2.9.2"
+    "jplayer": "~2.9.2",
+    "moment": "*"
   }
 }

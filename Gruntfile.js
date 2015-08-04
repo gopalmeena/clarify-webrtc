@@ -60,7 +60,8 @@ module.exports = function (grunt) {
                         'angular-socket-io/socket.js',
                         'angular-resource/angular-resource.js',
                         'angular-ui-router/release/angular-ui-router.js',
-                        'bootstrap/dist/js/bootstrap.min.js'
+                        'bootstrap/dist/js/bootstrap.min.js',
+                        'moment/min/moment.min.js'
                     ]
                     }
                 ]
