@@ -13,11 +13,11 @@ html
         .collapse.navbar-collapse
           ul.nav.navbar-nav
             if (user)
-              li(ng-class="{'active': tab=='/'}")
+              li(ng-class="{'active': tab=='/'}", ng-click="tabClick('/')")
                 a(href='#/') Contacts
-              li(ng-class="{'active': tab=='/history'}")
+              li(ng-class="{'active': tab=='/history'}", ng-click="tabClick('/history')")
                 a(href='#/history') History
-              li(ng-class="{'active': tab=='/search'}")
+              li(ng-class="{'active': tab=='/search'}", ng-click="tabClick('/search')")
                 a(href='#/search') Search
 
           ul.nav.navbar-nav.navbar-right
@@ -46,6 +46,8 @@ html
     script(src='/js/calls/calls.client.module.js')
     script(src='/js/calls/controllers/shell.client.controller.js')
     script(src='/js/calls/directives/jplayer.js')
+    script(src='/js/calls/directives/focus.js')
+    script(src='/js/calls/directives/loading.js')
     script(src='/js/calls/controllers/calls.client.controller.js')
     script(src='/js/calls/controllers/history.client.controller.js')
     script(src='/js/calls/controllers/search.client.controller.js')

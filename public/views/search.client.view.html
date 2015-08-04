@@ -7,21 +7,22 @@
       <div clas="btn-toolbar">
         <form id="searchForm" class="well form-inline">
           <div class="row">
-            <div class="form-group col-sm-10">
+            <div class="form-group col-sm-9">
               <label class="sr-only" for="query">Text to search</label>
-              <input data-ng-model="query" id="query" class="form-control" name="query" type="text"
+              <input data-ng-model="searchString" id="query" class="form-control" type="text" data-focus=""
                      placeholder="Text to search"/>
             </div>
-            <div class="col-sm-2">
-              <button id="search" class="btn btn-default" data-ng-click="search()"
-                      data-loading-text="Searching ...">
-                <span class="glyphicon.glyphicon-search"></span> Search
+            <div class="col-sm-3">
+              <button id="search" class="btn btn-default" data-ng-click="search()">
+                <span class="glyphicon glyphicon-search"></span>
+                <span data-loading="searching"
+                      data-loading-text="Searching...">Search</span>
               </button>
             </div>
           </div>
         </form>
       </div>
-      <div class="not-found" data-ng-show="notFound">Not Found</div>
+      <div class="not-found" data-ng-show="results.length==0">Not Found</div>
       <div id="result">
         <ul class="playlist list-group">
           <li class="list-group-item" data-ng-repeat="item in results" jplayer="item">
