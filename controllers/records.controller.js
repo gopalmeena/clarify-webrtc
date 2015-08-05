@@ -55,14 +55,14 @@ exports.finish = function (req, res) {
       var metadata = {
         recordId: record._id
       };
-      clarifyClient.createBundle({
-        name: 'Test',
-        media_url: config.BASE_URL + '/uploads/' + record._id + '.ogg',
-        notify_url: config.BASE_URL + '/records/notify',
-        external_id: record._id.toString(),
-        metadata: JSON.stringify(metadata)
-      }, function (err) {
-      });
+      //clarifyClient.createBundle({
+      //  name: 'Test',
+      //  media_url: config.BASE_URL + '/uploads/' + record._id + '.ogg',
+      //  notify_url: config.BASE_URL + '/records/notify',
+      //  external_id: record._id.toString(),
+      //  metadata: JSON.stringify(metadata)
+      //}, function (err) {
+      //});
       res.sendStatus(200);
     });
 };
