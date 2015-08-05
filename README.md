@@ -21,11 +21,3 @@ an approval to use your microphone. Approve this. After that the call will be st
 7. When you click hang-up button the conversation will be stopped, automatically recorded and
  sent to the server.
 8. You can see calls history at 'History' page. Also you can play recorded calls.
-
-## Limitations
-Current implementation of the application uses MediaRecorder object that is implementation
-of MediaStream Recording API (http://w3c.github.io/mediacapture-record/MediaRecorder.html).
-Currently MediaRecorder implemented only in Mozilla Firefox (https://developer.mozilla.org/ru/docs/Web/API/MediaRecorder).
-Therefore client side of the application can work only in Mozilla Firefox version > 29.0.
-
-The application doesn't use real database. All data is stored in memory and will be lost after restart.
