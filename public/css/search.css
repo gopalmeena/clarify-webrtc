@@ -47,8 +47,12 @@
 }
 
 .player-controls {
-    margin-top: 22px;
+    margin-top: 10px;
     margin-left: 0;
+}
+
+.call-record{
+    margin-top: 15px;
 }
 
 .jp-time-holder {

@@ -154,6 +154,8 @@ exports.search = function (req, res) {
         call.records.forEach(function(record){
           trecords[record._id] = record;
           record.name = call.name;
+          record.call = call._id;
+          record.date = call.date;
         });
       });
       for (var i = 0; i < count; i++) {
@@ -163,6 +165,8 @@ exports.search = function (req, res) {
         if (media) {
           var item = {
             id: media._id,
+            call: media.call,
+            date: media.date,
             mediaUrl: media.url,
             name: media.name,
             score: itemResult.score,

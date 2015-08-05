@@ -9,7 +9,20 @@ angular.module('calls').controller('SearchController', ['$scope', 'Search',
         $scope.error = null;
         $scope.searching = true;
         search($scope.searchString).success(function (searchResults) {
-          $scope.results = searchResults.results;
+          var data = prepareItems(searchResults.results),
+              results = [];
+
+          _.each(_.groupBy(data, 'call'), function(group, index){
+            var item = group[0];
+            results.push({
+              call: index,
+              name: item.name,
+              date: item.date,
+              records: group
+            });
+          });
+
+          $scope.results = results;
           $scope.searching = false;
         }).error(function (err) {
           $scope.error = err.responseText;
@@ -22,6 +35,13 @@ angular.module('calls').controller('SearchController', ['$scope', 'Search',
         init();
       }
     });
+
+    function prepareItems(items){
+      return _.map(items, function(item){
+        item.date = moment(item.date);
+        return item;
+      });
+    }
 
     function init(){
       $scope.searchString = '';
