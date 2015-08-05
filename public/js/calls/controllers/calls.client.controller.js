@@ -1,11 +1,12 @@
 'use strict';
 /* globals MediaRecorder */
 
-var PeerConnection = window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
-var IceCandidate = window.mozRTCIceCandidate || window.RTCIceCandidate;
-var SessionDescription = window.mozRTCSessionDescription || window.RTCSessionDescription;
-navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+var PeerConnection = window.webkitPeerConnection00 || window.webkitRTCPeerConnection || window.mozRTCPeerConnection || window.RTCPeerConnection || window.PeerConnection;
+var IceCandidate = window.webkitRTCIceCandidate || window.mozRTCIceCandidate || window.RTCIceCandidate;
+var SessionDescription = window.webkitRTCSessionDescription || window.mozRTCSessionDescription || window.RTCSessionDescription;
+var MediaRecorder = window.MediaRecorder || window.webkitMediaRecorder;
 
+navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
 angular.module('calls').controller('CallsController', ['$scope', '$stateParams', '$location',
   'Socket','Contacts', 'Records',
   function($scope, $stateParams, $location, Socket, Contacts, Records){
@@ -16,7 +17,7 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
   var from = $stateParams.from;
   var to = $stateParams.to;
   var call = $stateParams.call;
-  var options = { 'OfferToReceiveAudio': true };
+  var options = {'mandatory': {'OfferToReceiveAudio':true, 'OfferToReceiveVideo':false}};
 
   $scope.hangup = function () {
     Socket.emit('call.hang-up', {from: from, to: to});
@@ -77,7 +78,7 @@ angular.module('calls').controller('CallsController', ['$scope', '$stateParams',
         record.$update();
       };
     };
-    mediaRecorder.start(5000);
+    mediaRecorder.start(1000);
   };
 
   var gotError = function(error) {

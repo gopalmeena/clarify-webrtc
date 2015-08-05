@@ -61,9 +61,8 @@ exports.finish = function (req, res) {
         notify_url: config.BASE_URL + '/records/notify',
         external_id: record._id.toString(),
         metadata: JSON.stringify(metadata)
-      }, function (err) {
       });
-      res.sendStatus(200);
+      res.status(200).json({id: req.params.id});
     });
 };
 
