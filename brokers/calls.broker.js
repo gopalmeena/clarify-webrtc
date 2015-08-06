@@ -2,9 +2,7 @@
 
 var online = {};
 module.exports.authorize = function(socket) {
-  socket.emit('user.authorize');
-
-  socket.on('user.authorize.response', function(user){
+  socket.on('user.authorize', function(user){
     online[user._id] = true;
     socket.user_id = user._id;
     socket.join(user._id); // Join user to its own room for to call it individually.

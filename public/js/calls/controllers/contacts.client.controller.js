@@ -5,8 +5,6 @@ angular.module('calls').controller('ContactsController', ['$scope', 'Contacts', 
     var user;
     $scope.online = {};
 
-    Socket.emit('contacts.online');
-
     $scope.find = function () {
       $scope.contacts = Contacts.query();
     };
@@ -17,6 +15,8 @@ angular.module('calls').controller('ContactsController', ['$scope', 'Contacts', 
 
     Auth.get().then(function (u) {
       user = u;
+      Socket.emit('user.authorize', user);
+      Socket.emit('contacts.online');
     });
 
     $scope.call = function (id) {
@@ -32,10 +32,6 @@ angular.module('calls').controller('ContactsController', ['$scope', 'Contacts', 
     $scope.me = function (id) {
       return user && (id === user.id);
     };
-
-    Socket.on('user.authorize', function () {
-      Socket.emit('user.authorize.response', user);
-    });
 
     Socket.on('call', function (message) {
       $location.path('/call/' + message.from + '/' + user._id + '/incoming/' + message.call);
