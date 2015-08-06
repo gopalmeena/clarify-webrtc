@@ -9,14 +9,14 @@ html
     header(class='navbar navbar-fixed-top navbar-default')
       div(class='container')
         div(class='navbar-header')
-          a(class='navbar-brand', href='/') Simple RTC
+          a(class='navbar-brand', href='/') Clarify-WebRTC
         .collapse.navbar-collapse
           ul.nav.navbar-nav
             if (user)
               li(ng-class="{'active': tab=='/'}", ng-click="tabClick('/')")
                 a(href='#/') Contacts
               li(ng-class="{'active': tab=='/history'}", ng-click="tabClick('/history')")
-                a(href='#/history') History
+                a(href='#/history') Calls
               li(ng-class="{'active': tab=='/search'}", ng-click="tabClick('/search')")
                 a(href='#/search') Search
 
