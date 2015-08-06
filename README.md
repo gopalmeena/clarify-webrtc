@@ -26,8 +26,8 @@ Users call each other in a webrtc browser session and each leg of the call is re
 3. The BASE_URL setting must be addressable from outside your network in order for Clarify to send callbacks to the application.  For example, http://localhost:3000 will not work, but http://<yourexternalip> will work
 
 ## Running
-`grunt seed`
-`grunt`
+* `grunt seed`
+* `grunt`
 
 ## Usage
 1. Open http://localhost:3000 in your browser.
